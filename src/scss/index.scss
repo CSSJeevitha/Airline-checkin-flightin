@@ -1,0 +1,52 @@
+body {
+    background-image: url('../images/home-background.jpg');
+    background-size: cover;
+}
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.header {
+    // position: relative;
+    &__menu {
+        margin-right: 14px;
+    }
+}
+
+.home {
+    text-align: center;
+    position: absolute;
+    padding: 30px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    margin: auto 15%;
+    width: 60%;
+    &__profiles {
+        display: flex;
+        justify-content: center;
+    }
+}
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+#table {
+    .table__header {
+        font-weight: bold;
+    }
+    
+}
+
+.login-page {
+    max-width: 50%;
+    margin: 10% auto;
+    padding: 30px;
+    &__form {
+      display: flex;
+      flex-direction: column;
+    }
+}
