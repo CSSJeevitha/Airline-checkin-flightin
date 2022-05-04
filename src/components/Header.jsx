@@ -1,10 +1,10 @@
 import React from 'react'
 import {Menu, MenuBook} from '@mui/icons-material';
 import {AppBar, Box, Toolbar, Typography} from '@mui/material';
-import logo from './logo.jpg'
+// import logo from './logo.jpg'
 
 const Header = () => {
-  console.log(logo);
+
   return (
     <Box className='header'>
         <AppBar position="static">

@@ -7,9 +7,14 @@ import { Link } from 'react-router-dom'
 
 const LoginPage = () => {
   return (
-    <Card className='login-page'>
-         <form className='login-page__form'>
+    <Card className='login-page form-container'>
+         <form className='login-page__form form'>
             <Typography variant="h4">Sign Up</Typography>
+                <Text
+                    type="textl"
+                    id="name"
+                    label="Name"
+                />
                 <Text
                     type="email"
                     id="email"

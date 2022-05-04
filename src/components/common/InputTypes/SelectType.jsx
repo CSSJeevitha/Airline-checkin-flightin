@@ -1,23 +1,32 @@
 import React from 'react'
-import {Select, MenuItem} from '@mui/material'
+import {NativeSelect, MenuItem,Select} from '@mui/material'
 
-const SelectType = ({options}) => {
+const SelectType = ({options,label}) => {
   console.log(options);
   return (
-    // <select>
+    // <div>
+    //   <label htmlfor="#select">{label}</label>
+    //   <select id="select">
+    //     <option value={""}>Select</option>
     //     {options.map((option) => {
     //         return (
     //             <option value={option}>{option}</option>
     //         )
     //     })}
-    // </select>
-    <Select>
-    {options.map((option) => {
-        return (
-            <MenuItem value={option}>{option}</MenuItem>
-        )
-    })}
-   </Select>
+    //   </select>
+    // </div>
+    <>
+      <Select defaultValue={""} displayEmpty className="form-select">
+      
+        <MenuItem value={""}>Select</MenuItem>
+        {options.map((option) => {
+          return (
+            <MenuItem value={option} >{option}</MenuItem>
+          )
+        })}
+      </Select>
+    </>
+    
   )
 }
 

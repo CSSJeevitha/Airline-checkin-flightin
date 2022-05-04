@@ -8,22 +8,21 @@ import SelectType from './common/InputTypes/SelectType'
 
 const HomePage = () => {
   
- const from = ['Chennai','Bangalore','Delhi','Hyderabad'];
- const to = ['Chennai','Bangalore','Delhi','Hyderabad'];
+
   return (
     <Card className='home'>
         <CardContent>
             <p>Welcome to Jeevi Online Ticket Booking service</p>
             <CardActions className='home__profiles'>
                 <Button variant="contained">Admin</Button>
-                <Button variant="contained">Airline Staff</Button>
+                <Button variant="contained">Staff</Button>
             </CardActions>
         </CardContent>
-        <form>
+        {/* <form>
             <Typography>Find the available flights here!!!!</Typography>
             <SelectType options={from}/>
             <SelectType options={to} />
-        </form>
+        </form> */}
     </Card>
   )
 }

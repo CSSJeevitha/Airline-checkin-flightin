@@ -1,0 +1,66 @@
+{
+  "passengers": [
+    {
+      "id": 1,
+      "flightno": "J1001",
+      "userid": "2",
+      "name": "Harish",
+      "seatNo": "11",
+      "ancillaryServices": [
+        {
+          "serviceType": "Special Meals",
+          "opted": true
+        },
+        {
+          "serviceType": "Beverages",
+          "opted": true
+        },
+        {
+          "serviceType": "Baggage Services",
+          "opted": false
+        }
+      ],
+      "address": "Chennai",
+      "passportNo": "BBGH102",
+      "DOB": "28-04-1987"
+    },
+    {
+      "id": 2,
+      "flightno": "J1001",
+      "userid": "2",
+      "name": "Santosh",
+      "seatNo": "10",
+      "ancillaryServices": [
+        {
+          "serviceType": "Special Meals",
+          "opted": true
+        },
+        {
+          "serviceType": "Beverages",
+          "opted": true
+        },
+        {
+          "serviceType": "Baggage Services",
+          "opted": false
+        }
+      ],
+      "address": "Chennai",
+      "passportNo": "BBGH102",
+      "DOB": "28-04-1987"
+    }
+  ],
+  "ancillary": [
+    {
+      "serviceType": "Special Meals",
+      "opted": false
+    },
+    {
+      "serviceType": "Beverages",
+      "opted": false
+    },
+    {
+      "serviceType": "Baggage Services",
+      "opted": false
+    }
+  ]
+}

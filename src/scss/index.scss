@@ -16,14 +16,15 @@ body {
 .home {
     text-align: center;
     position: absolute;
-    padding: 30px;
+    // padding: 30px;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 140px;
+    max-height: 30vh;
+    // height: 140px;
     margin: auto 15%;
-    width: 60%;
+    // width: 60%;
     &__profiles {
         display: flex;
         justify-content: center;
@@ -48,5 +49,21 @@ body {
     &__form {
       display: flex;
       flex-direction: column;
+    }
+}
+.search-form {
+    max-width: 75%;
+    margin: 10% auto;
+    padding: 30px;
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: space-evenly;
+        &-select {
+            width: 40%;
+            height: 40px;
+        }
+      
     }
 }
