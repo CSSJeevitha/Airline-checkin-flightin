@@ -12,6 +12,10 @@ const AdminDashboard = ({passengers,fetchPassengers}) => {
      fetchPassengers();
   },[])
 
+  // const getPassengerInfo = (selectedPassenger) => {
+  //   navigate('/admin', )
+  // }
+
   const Row = ({passenger}) => {
     console.log(passenger);
     const [open, setOpen] = React.useState(false);
@@ -32,10 +36,11 @@ const AdminDashboard = ({passengers,fetchPassengers}) => {
               </IconButton>
             </TableCell>
             <TableCell>{passenger.name}</TableCell>
-            <TableCell align="right">{passenger.ancillaryServices.map((service) => { return <p>{service.opted && service.serviceType}</p>})}</TableCell>
+            <TableCell align="right">{passenger.ancillaryServices?.map((service) => { return <p>{service.opted && service.serviceType}</p>})}</TableCell>
             <TableCell align="right">{passenger.seatNo}</TableCell>
             <TableCell align="right">
-            <Link to="/addpassengers"><Button variant="contained">Update</Button></Link>
+              {/* <Link to={{ pathname:"addpassengers" , state: {passengerId: passenger.id}}}><Button variant="contained">Update</Button></Link> */}
+              <Link to="/addpassengers" state={{passenger: passenger, isUpdate: true}}><Button variant="contained" >Update</Button></Link>
             </TableCell>
               
         </TableRow>
@@ -82,7 +87,7 @@ const AdminDashboard = ({passengers,fetchPassengers}) => {
             <TableBody>
               {passengers.map((passenger) => {
                   return(
-                    <Row key={passenger.userid} passenger={passenger}/>
+                    <Row key={passenger.id} passenger={passenger}/>
                   )
                   
               })}
@@ -91,7 +96,6 @@ const AdminDashboard = ({passengers,fetchPassengers}) => {
         </Table>
         </Box>
       </Container>
-      
     </div>
   )
 }

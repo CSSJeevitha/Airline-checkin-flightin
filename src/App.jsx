@@ -38,12 +38,13 @@ function App() {
             <Header />
             <Routes>
                 <Route path='/login' exact element={<LoginPage />}/>
-                <Route path='/home' element={<HomePage />}/>
-                <Route path='/' element={<AdminDashboard />}/>
-                <Route path='/register' element={<RegisterPage />}/>
-                <Route path='/search' element={<SearchFlight />}/>
-                <Route path='/ancillary' element={<AncillaryServices />}/>
-                <Route path='/addpassengers' element={<Passengers ancillaryServicess={ancillaryServices}/>}/>
+                <Route path='/home' exact element={<HomePage />}/>
+                <Route path='/admin' exact element={<AdminDashboard />}/>
+                <Route path='/register' exact element={<RegisterPage />}/>
+                <Route path='/search' exact element={<SearchFlight />}/>
+                <Route path='/ancillary' exact element={<AncillaryServices />}/>
+                <Route path='/addpassengers' exact element={<Passengers />}/>
+                
             </Routes>
             {/* <Box sx={{ width: '100%', typography: 'body1' }}>
             <TabContext value={value}>

@@ -22,7 +22,7 @@
       ],
       "address": "Chennai",
       "passportNo": "BBGH102",
-      "DOB": "28-04-1987"
+      "DOB": "1987-09-04"
     },
     {
       "id": 2,
@@ -41,12 +41,36 @@
         },
         {
           "serviceType": "Baggage Services",
-          "opted": false
+          "opted": true
         }
       ],
       "address": "Chennai",
       "passportNo": "BBGH102",
-      "DOB": "28-04-1987"
+      "DOB": "1987-05-04"
+    },
+    {
+      "id": 3,
+      "flightno": "J1001",
+      "userid": "",
+      "name": "Jeevitha",
+      "seatNo": "12",
+      "ancillaryServices": [
+        {
+          "serviceType": "Special Meals",
+          "opted": false
+        },
+        {
+          "serviceType": "Beverages",
+          "opted": true
+        },
+        {
+          "serviceType": "Baggage Services",
+          "opted": false
+        }
+      ],
+      "address": "Chennai",
+      "passportNo": "123456",
+      "DOB": "2022-05-20"
     }
   ],
   "ancillary": [

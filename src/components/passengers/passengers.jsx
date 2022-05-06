@@ -1,29 +1,79 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {Button, Checkbox} from '@mui/material';
 import {connect} from 'react-redux'
-import {createPassengers} from '../../redux';
-import AncillaryServices from './AncillaryServices';
+import {createPassengers, updatePassengers} from '../../redux';
+import Moment from 'react-moment'
 
-const Passengers = ({createPassengers,ancillaryServicess}) => {
+import AncillaryServices from './AncillaryServices';
+import { useNavigate , useLocation} from 'react-router';
+import axios from 'axios';
+// import {Redirect} from "react-router-dom";
+
+const Passengers = ({createPassengers,ancillaryServicess,updatePassengers}) => {
+
   const [passengerDetails, setPassengerDetails] = useState({
-    "id": "",
-    "flightno": "",
-    "userid": "",
-    "name": "",
-    "seatNo": "",
-    "ancillaryServices": [
+    id: "",
+    flightno: "",
+    userid: "",
+    name: "",
+    seatNo: "",
+    ancillaryServices: [
+        {
+            serviceType: "Special Meals",
+            opted: false
+          },
+          {
+            serviceType: "Beverages",
+            opted: false
+          },
+          {
+            serviceType: "Baggage Services",
+            opted: false
+          }
     ],
-    "address": "",
-    "passportNo": "",
-    "DOB": ""
+    address: "",
+    passportNo: "",
+    DOB: ""
   })
+
+  let isUpdate = false;
+
+  
+  let data = useLocation();
+  const selectedPassenger = data.state?.passenger ? data.state.passenger : 0;
+  isUpdate = data.state?.isUpdate ? data.state.isUpdate : false;
+  console.log(isUpdate);
+  if(selectedPassenger) {
+    // useEffect(() => {
+    //     axios.get(`http://localhost:3000/passengers/${selectedId}`).then(response => {
+    //         setPassengerDetails(response.data);
+    //     })      
+    //  },[])
+     useEffect(() => {
+        setPassengerDetails(selectedPassenger);
+    },[]);
+
+  }
+  
+
+  let navigate = useNavigate();
+
+  console.log(passengerDetails);
   const [ancillaryServices, SetancillaryServices] = useState(ancillaryServicess)
   
   const handleSubmit = (event) => {
+    console.log(isUpdate);
+    alert("hiiii");
     event.preventDefault();
-    createPassengers({...passengerDetails}); 
+    if(isUpdate) {
+        updatePassengers({...passengerDetails});
+    } else {
+        createPassengers({...passengerDetails});
+    }
+    
+    navigate('/admin')
   }
 
   const handleChange = (event, serviceType) => {
@@ -33,7 +83,7 @@ const Passengers = ({createPassengers,ancillaryServicess}) => {
     console.log(target);
     
     if( target.type === 'checkbox') {
-        const updatedAncillaryServices = [...ancillaryServices.map((service) => {
+        const updatedAncillaryServices = [...passengerDetails.ancillaryServices.map((service) => {
             if(serviceType === service.serviceType) {
                 return ({
                     ...service,
@@ -53,9 +103,9 @@ const Passengers = ({createPassengers,ancillaryServicess}) => {
   }
   return (
     <>
-        {console.log(passengerDetails)}
-        <h2>Add/Update passengers</h2>
-        <form onSubmit={handleSubmit}>
+        {console.log(passengerDetails.name)}
+        <h2>{isUpdate ? "Update" : "Add"} passengers</h2>
+        <form onSubmit={(e) => handleSubmit(e)}>
         <Box sx={{ width: 500, maxWidth: '100%',}}>
             <TextField 
                 sx={{my: 2}} 
@@ -72,7 +122,7 @@ const Passengers = ({createPassengers,ancillaryServicess}) => {
                 label="Name" 
                 id="fullWidth" 
                 name="name" 
-                value={passengerDetails.fullName}
+                value={passengerDetails.name}
                 onChange={handleChange}
             />
             <TextField 
@@ -110,11 +160,11 @@ const Passengers = ({createPassengers,ancillaryServicess}) => {
                 onChange={handleChange}
             />
             
-            {ancillaryServices.map((service, index) => {
+            {passengerDetails.ancillaryServices.map((service, index) => {
                 return (
                     <div className='checkbox-container' key={index}>
                         {/* <Checkbox inputProps={{'id': index}} type="checkbox" checked={service.opted} onChange={(event) => handleChange(event,service.serviceType)}/> */}
-                        <Checkbox inputProps={{'id': index}} type="checkbox" onChange={(event) => handleChange(event,service.serviceType)}/>
+                        <Checkbox inputProps={{'id': index}} type="checkbox" checked={service.opted} onChange={(event) => handleChange(event,service.serviceType)}/>
                         <label htmlFor={index}>{service.serviceType}</label>
                     </div>  
                 )
@@ -126,7 +176,7 @@ const Passengers = ({createPassengers,ancillaryServicess}) => {
                 size='large'
                 // onClick={createPassengers}
             >
-                Save
+                {isUpdate ? "Update" : "Save"}
             </Button>
         </Box>
     </form>
@@ -135,15 +185,17 @@ const Passengers = ({createPassengers,ancillaryServicess}) => {
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state,ownProps) => {
     return {
         passengers: state.createPassengerReducer.passengers,
+        
     }
   }
   
   const mapDispatchToProps = (dispatch) => {
     return {
-        createPassengers: (passenger) => dispatch(createPassengers(passenger))
+        createPassengers: (passenger) => dispatch(createPassengers(passenger)),
+        updatePassengers: (passenger) => dispatch(updatePassengers(passenger))
     }
   }
 

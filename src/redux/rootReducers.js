@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux'
-import {fetchPassengerReducer, createPassengerReducer} from './passengers/passengerReducer'
+import {fetchPassengerReducer, createPassengerReducer, updatePassengerReducer} from './passengers/passengerReducer'
 
 const rootReducer = combineReducers({
     fetchPassengerReducer,
-    createPassengerReducer
+    createPassengerReducer,
+    updatePassengerReducer
 });
 
 export default rootReducer;
